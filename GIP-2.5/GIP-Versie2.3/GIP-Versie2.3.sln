@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30621.155
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GIP-Versie2.3", "GIP-Versie2.3\GIP-Versie2.3.csproj", "{01770B83-8C1A-4CDE-8B42-A44772BB91DA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{01770B83-8C1A-4CDE-8B42-A44772BB91DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01770B83-8C1A-4CDE-8B42-A44772BB91DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01770B83-8C1A-4CDE-8B42-A44772BB91DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01770B83-8C1A-4CDE-8B42-A44772BB91DA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C96615E3-F029-424A-AD96-3E602368B17C}
+	EndGlobalSection
+EndGlobal
