@@ -73,3 +73,5 @@ C:\Users\ruben\Documents\All Programming\Languages\C# codes\GIP\GIP-2.5\GIP-Vers
 C:\Users\ruben\Documents\All Programming\Languages\C# codes\GIP\GIP-2.5\GIP-Versie2.3\GIP-Versie2.3\obj\Debug\GIP-Versie2.3.csproj.CoreCompileInputs.cache
 C:\Users\ruben\Documents\All Programming\Languages\C# codes\GIP\GIP-2.5\GIP-Versie2.3\GIP-Versie2.3\obj\Debug\GIP-Versie2.3.exe
 C:\Users\ruben\Documents\All Programming\Languages\C# codes\GIP\GIP-2.5\GIP-Versie2.3\GIP-Versie2.3\obj\Debug\GIP-Versie2.3.pdb
+C:\Users\ruben\Documents\All Programming\Languages\C# codes\GIP\GIP-2.5\GIP-Versie2.3\GIP-Versie2.3\obj\Debug\EindScherm.g.cs
+C:\Users\ruben\Documents\All Programming\Languages\C# codes\GIP\GIP-2.5\GIP-Versie2.3\GIP-Versie2.3\obj\Debug\EindScherm.baml

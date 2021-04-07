@@ -49,6 +49,7 @@ namespace GIP_Versie2._3
 
 
         //methodes
+        //Achtergrond van spel inladen
         public void Achtergrond()
         {
             objImage1.BeginInit();

@@ -57,19 +57,6 @@ namespace GIP_Versie2._3
             }
         }
 
-        public bool DiamantAfgeven
-        {
-            get
-            {
-                return _afgeven;
-            }
-
-            set
-            {
-                value = _afgeven;
-            }
-        }
-
         public int X_pos
         {
             get
@@ -94,7 +81,7 @@ namespace GIP_Versie2._3
         }
 
         //Methods
-
+        //Oproepen bij linkerklik
         public void LeftArrowPressed()
         {
             if (_x_pos == 0)
@@ -108,11 +95,12 @@ namespace GIP_Versie2._3
                 _x_tegel--;
             }
             //objImage1.RotateFlip(RotateFlipType.Rotate270FlipNone);
-            //objImage1.ro
+            //objImage1.Rotation = Rotation.Rotate270;
             orientatie = "links";
             player1.Margin = new Thickness(_x_pos, _y_pos, 0, 0);
         }
 
+        //Oproepen bij rechterklik
         public void RightArrowPressed()
         {
             if (_x_pos == 576)
@@ -132,6 +120,7 @@ namespace GIP_Versie2._3
             player1.Margin = new Thickness(_x_pos, _y_pos, 0, 0);
         }
 
+        //Oproepen bij bovenklik
         public void UpArrowPressed()
         {
             if (_y_pos == 0)
@@ -151,6 +140,7 @@ namespace GIP_Versie2._3
             player1.Margin = new Thickness(_x_pos, _y_pos, 0, 0);
         }
 
+        //Oproepen bij omlaagklik
         public void DownArrowPressed()
         {
             if (_y_pos == 576)
@@ -168,19 +158,6 @@ namespace GIP_Versie2._3
             player1.Source = objImage1;
             orientatie = "onder";
             player1.Margin = new Thickness(_x_pos, _y_pos, 0, 0);            
-        }
-
-        public void Planten(bool pZaadVast, int pDoosX, int pDoosY)
-        {
-            if(pZaadVast == true)
-            {
-                _afgeven = true; //checken of de positie van de doos binnen 1 tegel van de speler ligt (speler positie update niet)
-            }
-
-            else
-            {
-                _afgeven = false;
-            }
         }
     }
 }

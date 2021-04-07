@@ -19,14 +19,16 @@ namespace GIP_Versie2._3
     class Plant : LevelElementen
     {
         //klassevariablen
-        protected Random objRandom = new Random();
-        protected List<Plant> _ingeplant = new List<Plant>();
         protected DispatcherTimer objTimer1;
         protected DispatcherTimer objTimer2;
 
+        List<Plant> _ingeplant = new List<Plant>();
+
         bool _inBezit;
+        int _aantalGegroeid = 0;
         Image groei = new Image();        
-        Image _oogst = new Image();        
+        Image _oogst = new Image();
+        Random objRandom = new Random();
 
         //constructor
         public Plant(Canvas pCanvas) : base(pCanvas)
@@ -57,6 +59,35 @@ namespace GIP_Versie2._3
             }
         }
 
+        public int AantalGegroeid
+        {
+            get
+            {
+                return _aantalGegroeid;
+            }
+
+            set
+            {
+                value = _aantalGegroeid;
+            }
+        }
+
+        public int Xzaadje
+        {
+            get
+            {
+                return _x_pos;
+            }
+        }
+
+        public int Yzaadje
+        {
+            get
+            {
+                return _y_pos;
+            }
+        }
+
         public Image Oogst
         {
             get
@@ -64,8 +95,23 @@ namespace GIP_Versie2._3
                 return _oogst;
             }
         }
+
+        public List<Plant> Ingeplant
+        {
+            get
+            {
+                return _ingeplant;
+            }
+
+            set
+            {
+                _ingeplant = value;
+            }
+        }
+
         //methodes
 
+        //Word opgeroepen bij gebruik zaadje
         public void inPlanten(int pSpelerX, int pSpelerY)
         {
             _x_pos = pSpelerX;
@@ -81,6 +127,7 @@ namespace GIP_Versie2._3
 
         }
 
+        //na 15 seconden is de groei al halfweg --> nieuwe afbeelding
         public void GroeiFase1(object sender, EventArgs e)
         {
             _objCanvas.Children.Remove(groei);
@@ -95,45 +142,25 @@ namespace GIP_Versie2._3
             objTimer2.Start();
         }
 
+        //15sec later, groei is compleet
         public void GroeiFase2(object sender, EventArgs e)
         {
             _objCanvas.Children.Remove(groei);
-            switch (objRandom.Next(1, 1))
-            {
-                case 1:
-                    Potatoe objPatatje = new Potatoe(_objCanvas, _x_pos, _y_pos);
-                    _ingeplant.Add(objPatatje);
-                    break;
-            }
-
+            //aantalGegroeid optellen voor UpdateGroei() in Gereedschap.cs -- TIJDELIJKE OPLOSSING||WERKT NIET
+            OogstToevoegen(_x_pos, _y_pos);
             objTimer2.Stop();
         }
 
-        public void Oogsten(int pSpelerX, int pSpelerY)
+        //toevoegen aan lijst --> loopt mis, lijst reset zichzelf (uitleg in zeis.cs.Oogsten() )
+        public void OogstToevoegen(int ZaadjeX, int ZaadjeY)
         {
-            for(int i = 0; i < _ingeplant.Count; i++)
+            //Willekeurige plant kiezen en toevoegen
+            switch (objRandom.Next(1, 1))
             {
-                if(_ingeplant[i].Xpos == pSpelerX && _ingeplant[i].Ypos == pSpelerY)
-                {
-                    _ingeplant[i]._inBezit = true;
-                }
-            }
-        }
-
-        public void PlantInMandje(int pXSpeler, int pYSpeler)
-        {
-            for (int i = 0; i < _ingeplant.Count; i++) //COUNT WORD 0
-            {
-                if (_ingeplant[i]._inBezit)
-                {
-                    _objCanvas.Children.Remove(_ingeplant[i].Oogst);
-                    _x_pos = pXSpeler + (64 - (_grootte / 3));
-                    _y_pos = pYSpeler + (64 - (_grootte / 3));
-                    _ingeplant[i].Oogst.Margin = new Thickness(_x_pos, _y_pos, 0, 0);
-                    _ingeplant[i].Oogst.Width = _grootte / 3;
-                    _ingeplant[i].Oogst.Height = _grootte / 3;
-                    _objCanvas.Children.Add(_ingeplant[i].Oogst);
-                }
+                case 1:
+                    Potatoe objPatatje = new Potatoe(_objCanvas, ZaadjeX, ZaadjeY);
+                    _ingeplant.Add(objPatatje);
+                    break;
             }
         }
     }

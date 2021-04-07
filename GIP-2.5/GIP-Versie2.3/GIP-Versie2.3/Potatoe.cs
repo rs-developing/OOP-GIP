@@ -19,7 +19,7 @@ namespace GIP_Versie2._3
     {
         //klassevariablen
         bool _wordGedragen = false, _inDoos = false;
-        Image _edelsteen = new Image();
+        Image _patatje = new Image();
 
         //constructor
         public Potatoe(Canvas pCanvas, int pXSpeler, int pYSpeler) : base(pCanvas) //Aangezien LevelElementen parameters heeft moeten we Edelsteen opnieuw vertellen om deze te gebruiken. Dit doen we door base te gebruiken. Zo niet, krijgen we error CS7036
@@ -35,11 +35,11 @@ namespace GIP_Versie2._3
             UriKind.Relative);
             objImage1.EndInit();
 
-            _edelsteen.Source = objImage1;
-            _edelsteen.Margin = new Thickness(_x_pos, _y_pos, 0, 0);
-            _edelsteen.Width = _grootte;
-            _edelsteen.Height = _grootte;
-            _objCanvas.Children.Add(_edelsteen);
+            _patatje.Source = objImage1;
+            _patatje.Margin = new Thickness(_x_pos, _y_pos, 0, 0);
+            _patatje.Width = _grootte;
+            _patatje.Height = _grootte;
+            _objCanvas.Children.Add(_patatje);
         }
 
         //eigenschappen
@@ -71,10 +71,6 @@ namespace GIP_Versie2._3
 
         //methodes
 
-        public void ZitInDoos()
-        {
-            _edelsteen.Margin = new Thickness(0, 0, 0, 0);
-            _objCanvas.Children.Remove(_edelsteen);
-        }
+
     }
 }

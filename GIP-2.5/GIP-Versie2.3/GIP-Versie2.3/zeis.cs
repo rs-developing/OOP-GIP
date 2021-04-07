@@ -20,11 +20,14 @@ namespace GIP_Versie2._3
         //klassevariablen
         Image _zeisje = new Image();
         bool _inplanten = new bool();
+        Plant _planten;
 
         //constructor
         public Zeis(Canvas pCanvas) : base(pCanvas) //Aangezien LevelElementen parameters heeft moeten we Edelsteen opnieuw vertellen om deze te gebruiken. Dit doen we door base te gebruiken. Zo niet, krijgen we error CS7036
         {
             _objCanvas = pCanvas;
+
+            _planten = new Plant(_objCanvas);
 
             _x_tegel = 7;
             _y_tegel = 0;
@@ -69,6 +72,7 @@ namespace GIP_Versie2._3
         }
 
         //methodes
+        //Verwijderd zeis, zet deze in hand van speler
         public void SpelerVolgen(int pXSpeler, int pYSpeler)
         {
             _objCanvas.Children.Remove(_zeisje);
@@ -80,6 +84,7 @@ namespace GIP_Versie2._3
             _objCanvas.Children.Add(_zeisje);
         }
 
+        //Zet zeis terug op begin positie
         public void reset()
         {
             _x_tegel = 7;
@@ -93,6 +98,39 @@ namespace GIP_Versie2._3
             _zeisje.Width = _grootte;
             _zeisje.Height = _grootte;
             _objCanvas.Children.Add(_zeisje);
+        }
+
+        //Zet waarde van een gegroeide plant op true indien positie gelijk
+        public void Oogsten(int pXSpeler, int pYSpeler)
+        {
+            for (int i = 0; i < _planten.Ingeplant.Count; i++)
+            {
+                //De eigenschap ingeplant retourneert hier als waarde 0, ookal is er bij stap voor stap debuggen te zien
+                //dat in plant.cs, de lijst wel 1 item krijgt.
+                if (_planten.Ingeplant[i].Xpos == pXSpeler && _planten.Ingeplant[i].Ypos == pYSpeler)
+                {
+                    _planten.Ingeplant[i].InBezit = true;
+                    PlantInMandje(pXSpeler, pYSpeler);
+                }
+            }
+        }
+
+        //Zet de plant die in bezit in, in de hand van de speler.
+        public void PlantInMandje(int pXSpeler, int pYSpeler)
+        {
+            for (int i = 0; i < _planten.Ingeplant.Count; i++) //COUNT WORD 0
+            {
+                if (_planten.Ingeplant[i].InBezit)
+                {
+                    _objCanvas.Children.Remove(_planten.Ingeplant[i].Oogst);
+                    _x_pos = pXSpeler + (64 - (_grootte / 3));
+                    _y_pos = pYSpeler + (64 - (_grootte / 3));
+                    _planten.Ingeplant[i].Oogst.Margin = new Thickness(_x_pos, _y_pos, 0, 0);
+                    _planten.Ingeplant[i].Oogst.Width = _grootte / 3;
+                    _planten.Ingeplant[i].Oogst.Height = _grootte / 3;
+                    _objCanvas.Children.Add(_planten.Ingeplant[i].Oogst);
+                }
+            }
         }
     }
 }

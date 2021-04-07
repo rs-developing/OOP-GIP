@@ -54,6 +54,7 @@ namespace GIP_Versie2._3
         }
 
         //methodes
+        //Verwijder gieter, teken daarna opnieuw in de hand v/d speler
         public void SpelerVolgen(int pXSpeler, int pYSpeler)
         {
             _objCanvas.Children.Remove(_gietertje);
@@ -65,6 +66,7 @@ namespace GIP_Versie2._3
             _objCanvas.Children.Add(_gietertje);
         }
 
+        //Zet gieter terug op begin positie
         public void reset()
         {
             _x_tegel = 9;

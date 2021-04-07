@@ -70,6 +70,7 @@ namespace GIP_Versie2._3
         }
 
         //methodes
+        //Verwijderd zaadje, zet deze in hand van speler
         public void SpelerVolgen(int pXSpeler, int pYSpeler)
         {
                 _objCanvas.Children.Remove(_zaadje);
